@@ -1,4 +1,4 @@
-from book import Book
+from Bibleri import Book, Library, User
 
 if __name__ == '__main__':
     kak = Book('kjhg','jhgf',2012)
