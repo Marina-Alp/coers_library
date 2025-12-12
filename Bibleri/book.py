@@ -1,41 +1,64 @@
 class Book:
     '''
-    Класс позволяет создовать книги
-        создовая книги нужно ввести: название книги, имя автора и год выпуска
-        пример: book1 = Book('The Call of Cthulhu','Lovecraft',1928)
-    Класс позволяет изменять книги
-        для этого нужно прировнять переменную к новому значению введя все новые переменные через запятую
-        пример: book1 = 'Dagon, Lovecraft, 1919'
-    Класс позволяет удалять книги
-        для этого введите del и книгу которую желаите удалить
-        пример del book1.full_name_book
-    Класс позволяет смотреть выводить книги
-        print(book1)
-    Класс позволяет сравнивать книги
-        book1.compare(book2)
+    Класс создания и взаимодействия с книгой
     '''
     def __init__(self, name, author, year):
+        """
+        Базовый конструктор класса
+        :param name: Название книги
+        :param author: Имя автора книги
+        :param year: Год выпуска книги
+        """
         self._name = name
         self._author = author
         self._year = year
 
     @property
     def full_name_book(self):
-        return self._name + " " + self._author + " " + self._year
+        """
+        Метод обращения к книги
+        :return: Полное наименования книги
+        """
+        return self._name + " , " + self._author + " , " + str(self._year)
 
     @full_name_book.setter
     def full_name_book(self, new):
-        self._name, self._author, self._year = new.split(",")
+        """
+        Метод меняет исходно введённые параметры книги
+        :param new: 'Название книги, имя автора книги, год выпуска книги'
+        :return: Новые значения : названия, имени автора, года выпуска
+        """
+        if new is not None:
+            self._name, self._author, self._year = new.replace(' ','').split(",")
+        else: self._name, self._author, self._year = 'Этой, книги, нет'.split(",")
+
 
     @full_name_book.deleter
     def full_name_book(self):
-        print(f"Книга '{self}' удалина")
-        del self.full_name_book
+        """
+        Метод удаляет книгу
+        :return: None
+        """
+        print(f"{self} - удалина")
+        self.full_name_book = None
 
-    def print(self): #__str__?
-        print(f'Это книга: {self.full_name_book}')
+
+    def __str__(self): #__str__?
+        """
+        Выводит полное имя книги
+        :return: f'Это книга: "{Полное имя книги}"'
+        """
+        return f'Это книга: "{self.full_name_book}"'
 
     def compare(self, compare_book):
+        """
+        Метод сравнения двух книг
+        :param compare_book: Полное имя книги с которой сравнивают
+        :return: True/False
+        """
         if self.full_name_book == compare_book:
+            print("Книги одинаковы")
             return True
-        else: return False
+        else:
+            print("Книги разные")
+            return False
