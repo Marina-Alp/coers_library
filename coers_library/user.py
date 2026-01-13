@@ -1,5 +1,5 @@
-from book import Book
-from library import Library
+from .book import Book
+from .library import Library
 
 class User:
     """
@@ -54,21 +54,5 @@ class User:
             libreri.app_book(returning_book)
             print(f'{returning_book} вычеркнута из вашего списка чтения')
         else: print("У вас нет этой книги")
-
-if __name__ == '__main__':
-    kak = Book('Алые паруса', 'Александр Грин', 1923)
-    eto = Book("Божественная комедия", "Данте Алигьери", 1816)
-
-    lib1 = Library('Flex')
-    lib1.app_book(kak)
-    lib1.app_book(eto)
-
-    user1 = User('Фелекс')
-    print(user1)
-    print(lib1)
-    user1.app_reading_book(lib1, kak)
-    user1.app_reading_book(lib1, eto)
-    print(user1)
-    print(user1)
 
 

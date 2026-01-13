@@ -1,4 +1,4 @@
-from book import Book
+from .book import Book
 
 class Library:
     """
@@ -104,21 +104,3 @@ class Library:
         return f'Библиотека: "{self.library}"'
 
 
-if __name__ == '__main__':
-    kak = Book('jhg', 'djh?', 2012)
-    eto = Book("ajhg", "ajh?", 2510)
-
-    lib1 = Library('Flis')
-    print(lib1)
-    lib1.app_book(kak)
-    print(lib1)
-    lib1.app_book(eto)
-    print(lib1)
-    lib1.sorting(2)
-
-
-
-
-
-
-#sorted(student_objects, key=lambda student: student.age)
